@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Poetry Wall - Soliflore</title>
+    <link rel="stylesheet" type="text/css" href="../../static/indexstyling.css">
+</head>
+<body class="page-back">
+	<header class="navbar">
+		<h1>Soliflore</h1>
+		<nav>
+			<ul>
+				<li><a href="{{ url_for('poetrywall.index')}}">Home</a></li>
+                {% if g.user %}
+                    <li><a href="{{ url_for('poetrywall.wall') }}">Wall</a></li>
+                    <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('auth.register') }}">Register</a></li>
+                    <li><a href="{{ url_for('auth.login') }}">Login</a></li>
+                {% endif %}
+			</ul>
+		</nav>
+	</header>
+	<main class="introduction">
+		<section>
+			<h2>Illuminated Verse: Illuminate Your Words, Share Your Soul</h2>
+			<p>Shimmering verses etched upon the midnight sky, showcasing the depths of your poetic soul. A symphony of words 
+				unfolds, resonating with the hearts of those who dare to listen. A sanctuary awaits, where imagination takes 
+				flight and dreams find solace. In this realm of beauty and expression, I invite you to immerse yourself, to be 
+				swept away by the magic of language. Love breathes life into every syllable, weaving tales that stir emotions and 
+				ignite passions. You, dear poet, hold the power to enchant, to captivate, and to leave an indelible mark upon the 
+				world.</p>
+		</section>
+		<!-- <section>
+			<form>
+				<label for="email">What??!! You haven't signed up? What are you waiting for ? Do it now it's just a click away.</label>
+				<a class="btn btn-primary" href="{{ url_for('auth.register')}}">Click Me</a>
+			</form> -->
+		</section>
+	</main>
+	<footer>	
+		<p>&copy; 2023 Soliflore</p>
+	</footer>
+</body>
+</html>

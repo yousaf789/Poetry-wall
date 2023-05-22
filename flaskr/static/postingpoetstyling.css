@@ -1,0 +1,328 @@
+body {
+  font-family: Poppins;
+  color: #f9f9f9;
+  /* background-color: #26293d; */
+  background-size: 400%;
+  /* background-image: url(nightskylight.jpg); */
+  background-color: black;
+  background-repeat: no-repeat;
+  background-position: 0% 10%;
+  /* line-height: 1.6; */
+  /* background */
+  /* background-color: red; */
+}
+
+button {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.burger {
+  z-index: 3;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 88px;
+  height: 88px;
+  background-image: url("menu.jpg");
+  background-repeat: no-repeat;
+  /* background-color: #333; */
+  background-size: 50px 50px;
+  background-position: center;
+}
+
+.burger, .menu {
+  position: fixed;
+}
+
+.menu {
+  z-index: 2;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 400px;
+  height: 100%;
+  background-color: rgb(27, 27, 27);
+  translate: -100% 0;
+  transition: translate 0.375s cubic-bezier(0.175, 0.885, 0.32, 1);
+  /* transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out; */
+}
+
+.menu nav {
+  opacity: 0;
+}
+
+.menu nav:hover a {
+  opacity: 0.25;
+}
+
+.menu nav a:hover {
+  opacity: 1;
+}
+
+.menu nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu a {
+  position: relative;
+  color: #f9f9f9;
+  font-size: 32px;
+  padding: 20px 0;
+  width: 300px;
+  text-decoration: none;
+}
+
+.menu a, .menu a::before, .menu a::after {
+  transition: 0.4s;
+}
+
+.menu a::before, .menu a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 10px;
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  /* background-color: #f9f9f9; */
+  /* transform: scaleX(0); */
+}
+
+.menu a::before {
+  opacity: 0;
+  background: rgb(255 255 255 / 20%);
+  /* transform-origin: left;
+  transform: scaleX(0); */
+}
+
+.menu a::after {
+  transform: scaleX(0);
+  transform-origin: 0% 50%;
+  background: #f7f7f7;
+}
+
+.menu a:hover::before {
+  opacity: 1;
+  /* transform: scaleX(1); */
+}
+
+.menu a:hover::after {
+  transform: scaleX(1);
+}
+
+body.open .menu {
+  opacity: 1;
+  visibility: visible;
+  translate: 0;
+  animation: menu-in 0.375s;
+}
+
+body.open .menu nav {
+  opacity: 1;
+  /* animation: fadeIn 0.375s 0.125s forwards; */
+}
+
+body.open .burger {
+  background-image: url("close.png");
+}
+
+@keyframes menu-in {
+  0% {
+    clip-path: ellipse(60% 60% at 0% 50%);
+  }
+  100% {
+    clip-path: ellipse(120% 120% at 0% 50%);
+  }
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    translate: -30px 0;
+  }
+  100% {
+    opacity: 1;
+    /* transform: translateY(0); */
+  }
+}
+
+.add-poem-button {
+  position: fixed;
+  color: #f7f7f7;
+  z-index: 2;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 50px;
+  padding: 10px 20px;
+  font-size: 24px;
+  background-color: rgb(27, 27, 27);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: box-shadow 0.3s;
+}
+
+.add-poem-button:hover {
+  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.8), 0 0 20px 10px rgba(255, 255, 255, 0.4);
+}
+
+.popup {
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup.show {
+  display: flex;
+}
+
+.popup-content {
+  background-color: transparent;
+  padding: 200px;
+  border-radius: 5px;
+  position: relative;
+  width: 300px;
+  height: 300px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* transform: translate(-50, -50%); */
+  /* top: 50%; */
+  left: 25%;
+}
+
+.popup h2 {
+  text-align: center;
+}
+
+
+#new-poem-container {
+  background-color: #f7dc6f;
+  line-height: 1.6;
+  padding: 20px;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+.form-field {
+  margin-bottom: 10px;
+}
+
+.form-field label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-field input[type="text"],
+.form-field textarea {
+  width: 100%;
+  padding: 5px;
+}
+
+#done-button {
+  padding: 10px;
+  background-color: transparent;
+  color: #f7f7f7;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+input {
+  background-color: rgb(20, 20, 20);;
+  border: transparent;
+  color: #f7f7f7;
+}
+
+textarea {
+  /* background-color: transparent; */
+  color: #f7f7f7;
+  background-color: rgb(20, 20, 20);
+  border: transparent;
+}
+
+#poetry-wall {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  padding: 20px;
+}
+
+.poem-point {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background-color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 4px 1px white;
+  opacity: 0.8;
+}
+
+.poem-point:hover {
+  z-index: 10;
+  box-shadow: 0 0 6px 2px white;
+}
+
+.poem-point[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  left: 100%;
+  top: -50%;
+  white-space: pre-wrap;
+  background-color: transparent;
+  /* border: 1px solid #333; */
+  padding: 5px;
+  border-radius: 20px;
+  font-size: 12px;
+  pointer-events: none;
+  z-index:99999;
+}
+
+
+/* .poem-point:hover::after {
+  visibility: visible;
+  opacity: 1;
+}
+
+.poem-point::after {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s;
+} */
+
+#close-button {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: transparent;
+  color: #f7f7f7;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#close-button:hover {
+  background-color: #f7f7f7;
+  color: #f7f7f7;
+}

@@ -1,0 +1,85 @@
+.navbar {
+    /* position:fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999; */
+    background-color: rgba(0, 0, 0, 0.5); 
+    color: #EFEFEF; /* Stardust Silver */
+    border-radius: 10px; /* add rounded edges */
+    display: flex; /* use flexbox to align items */
+    justify-content: space-between; /* push items to opposite ends */
+    align-items: center; /* vertically center items */
+    padding: 10px; /* add padding for spacing */
+  }
+  
+  /* style the company name */
+  nav .company-name {
+    font-weight: bold;
+  }
+
+  nav ul {
+    display: flex;
+    list-style: none;
+  }
+
+  /* style the links inside the navigation bar */
+  nav a {
+    color: #EFEFEF;
+    margin-left: 20px; /* add spacing between links */
+    text-decoration: none;
+    padding: 8px 12px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* style the currently active link */
+  nav a.active {
+    color: #b8a122;
+    background-color: #cccccc;
+  }
+
+  nav a:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  
+.introduction {
+    font-family: var(--font-family-display,"Charlie Display",sans-serif);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    margin-top: 0px;
+    font-size: 2rem;
+    line-height: 1.25;
+}
+    .bigintro {
+    font-family: var(--font-family-display,"Charlie Display",sans-serif);
+    }
+
+    .intro {
+    font-family: var(--font-family-display,"Charlie Display",sans-serif);
+    }
+  
+.page-back {
+    color: #cccccc;
+    /* background-color: #26293D; */
+    background-image: url(space2.jpg);
+    background-size: cover;
+    text-align: center;
+}
+
+.register-login {
+    display: flex;
+    flex-direction: column;
+    width:100%;
+    justify-content: center;
+    align-items: center;
+    color:black;
+    margin-top: 40px;
+    background-color: #f2e285;
+}
+
+.register-login-pos {
+    width: 50%;
+}
+

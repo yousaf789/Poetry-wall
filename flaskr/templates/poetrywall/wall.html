@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Poetry Wall</title>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="../../static/postingpoetstyling.css">
+</head>
+<body>
+  <div id="poetry-wall"></div>
+  <button class="burger" onclick="toggleMenu()"></button>
+  
+  <div class="menu">
+    <nav>
+      <a href="{{ url_for('poetrywall.index') }}" style="animation-delay: 0.2s;">Home</a>
+      <a href="{{ url_for('poetrywall.wall') }}" style="animation-delay: 0.3s;">Wall</a>
+      <a href=# style="animation-delay: 0.3s;">My Account</a>
+      <a href="{{ url_for('auth.logout') }}" style="animation-delay: 0.3s;">Logout</a>
+    </nav>
+  </div>
+
+  <section>
+    <button class="add-poem-button" onclick="togglePopup()">Add Poem</button>
+
+    <div class="popup" id="popup">
+      <div class="popup-content">
+        <h2>Add Poem</h2>
+        <form id="poetry-form">
+          <div class="form-field">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required>
+          </div>
+          <div class="form-field">
+            <label for="body">Body:</label>
+            <textarea id="body" name="body" rows="10" cols="50" required></textarea>
+          </div>
+          <button id="done-button">Done</button>
+          <!-- <button id="close-button" class="close-btn" onclick="closePopup()">X</button> -->
+        </form>
+      </div>
+    </div>
+  </section>
+  
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="../../static/postingpoetryscript.js"></script>
+  <script type="text/javascript">
+    const toggleMenu = () =>
+      document.body.classList.toggle('open');
+    
+    function togglePopup() {
+      var popup = document.getElementById("popup");
+      popup.classList.toggle("show")
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var popup = document.querySelector('.popup');
+      var doneButton = document.getElementById('done-button');
+      var addPoemButton = document.querySelector('.add-poem-button');
+
+      function openPopup() {
+        popup.style.display = 'block';
+        addPoemButton.disabled = true; // Disable the "Add Poem" button
+      }
+
+      function closePopup() {
+        popup.style.display = 'none';
+        document.getElementById("title").value = ""; // Clear the title field
+        document.getElementById("body").value = ""; // Clear the body field
+        addPoemButton.disabled = false; // Re-enable the "Add Poem" button
+      }
+
+      function handleSubmit(event) {
+        event.preventDefault(); // Prevent form submission
+
+        var title = document.getElementById('title').value;
+        var body = document.getElementById('body').value;
+
+        if (title.trim() === "" || body.trim() === "") {
+          alert("Please enter both title and body."); // Show an alert if fields are empty
+          return;
+        }
+
+        // Hide the popup
+        closePopup();
+
+        // Display the star with the poem content (assuming you have a function to handle this)
+        displayPoem(title, body);
+
+        // Re-enable the "Add Poem" button
+        addPoemButton.disabled = false;
+      }
+
+      doneButton.addEventListener('click', handleSubmit);
+      addPoemButton.addEventListener('click', openPopup);
+    });
+  </script>
+</body>
+</html>
